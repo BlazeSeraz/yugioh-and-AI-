@@ -1,0 +1,59 @@
+import random
+
+decklist = [
+    "Raiza the Mega Monarch",
+    "Mist Valley Apex Avian",
+    "Floowandereeze & Empen",
+    "Floowandereeze & Empen",
+    "Floowandereeze & Eglen",
+    "Floowandereeze & Eglen",
+    "Floowandereeze & Eglen",
+    "Floowandereeze & Stri",
+    "Floowandereeze & Robina",
+    "Floowandereeze & Robina",
+    "Floowandereeze & Robina",
+    "Floowandereeze & Toccan",
+    "Floowandereeze and the Unexplored Winds",
+    "Floowandereeze and the Unexplored Winds",
+    "Floowandereeze and the Magnificent Map",
+    "Floowandereeze and the Magnificent Map",
+    "Floowandereeze and the Magnificent Map",
+    "Floowandereeze and the Dreaming Town",
+    "Pot of Duality",
+    "Pot of Duality",
+    "Pot of Duality",
+    "Pot of Extravagance",
+    "Pot of Extravagance",
+    "Pot of Extravagance",
+    "Book of Moon",
+    "Book of Moon",
+    "Book of Moon",
+    "Terraforming",
+    "Jack-In-The-Hand",
+    "Jack-In-The-Hand",
+    "Nibiru, the Primal Being",
+    "Nibiru, the Primal Being",
+    "Nibiru, the Primal Being",
+    "Evenly Matched",
+    "Evenly Matched",
+    "Evenly Matched",
+    "Forbidden Chalice",
+    "Ash Blossom & Joyous Spring",
+    "Ash Blossom & Joyous Spring",
+    "Ash Blossom & Joyous Spring"
+]
+
+def draw_cards(decklist, num_draws):
+    return random.sample(decklist, num_draws)
+
+num_draws = 5
+cards_to_check = ["Pot of Duality", "Floowandereeze & Robina", "Book of Moon"]
+
+num_iterations = 10000
+count = 0
+for i in range(num_iterations):
+    hand = draw_cards(decklist, num_draws)
+    if all(card in hand for card in cards_to_check):
+        count += 1
+
+print(f"The probability of drawing {num_draws} cards and getting {cards_to_check} after {num_iterations} iterations is {count/num_iterations:.2%}")

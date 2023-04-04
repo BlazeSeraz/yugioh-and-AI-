@@ -1,0 +1,58 @@
+import random
+from collections import Counter
+
+deck = ['Raiza the Mega Monarch',
+        'Mist Valley Apex Avian',
+        'Floowandereeze & Empen',
+        'Floowandereeze & Empen',
+        'Floowandereeze & Eglen',
+        'Floowandereeze & Eglen',
+        'Floowandereeze & Eglen',
+        'Floowandereeze & Stri',
+        'Floowandereeze & Robina',
+        'Floowandereeze & Robina',
+        'Floowandereeze & Robina',
+        'Floowandereeze & Toccan',
+        'Floowandereeze and the Unexplored Winds',
+        'Floowandereeze and the Unexplored Winds',
+        'Floowandereeze and the Magnificent Map',
+        'Floowandereeze and the Magnificent Map',
+        'Floowandereeze and the Magnificent Map',
+        'Floowandereeze and the Dreaming Town',
+        'Pot of Duality',
+        'Pot of Duality',
+        'Pot of Duality',
+        'Pot of Extravagance',
+        'Pot of Extravagance',
+        'Pot of Extravagance',
+        'Book of Moon',
+        'Book of Moon',
+        'Book of Moon',
+        'Terraforming',
+        'Jack-In-The-Hand',
+        'Jack-In-The-Hand',
+        'Nibiru, the Primal Being',
+        'Nibiru, the Primal Being',
+        'Nibiru, the Primal Being',
+        'Evenly Matched',
+        'Evenly Matched',
+        'Evenly Matched',
+        'Forbidden Chalice',
+        'Ash Blossom & Joyous Spring',
+        'Ash Blossom & Joyous Spring',
+        'Ash Blossom & Joyous Spring']
+
+def draw_hand():
+    return random.sample(deck, 5)
+
+def get_probabilities(draws, num_simulations):
+    counts = Counter()
+    for i in range(num_simulations):
+        hand = draw_hand()
+        counts.update(hand)
+    return {card: count/num_simulations for card, count in counts.items()}
+
+num_simulations = 100000
+probabilities = get_probabilities(deck, num_simulations)
+for card, probability in probabilities.items():
+    print(f"{card}: {probability:.2%}")
